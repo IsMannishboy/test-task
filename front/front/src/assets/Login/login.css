@@ -15,23 +15,35 @@
 }
 .form-div {
   display: flex;
-  width: 40%;
-  justify-content: center; /* центрируем форму по горизонтали внутри main */
-  align-items: center;     /* по вертикали */
-  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
+
 #form{
      margin-bottom: 15px;
   font-weight: 600;
   color: #333;
   text-align: center; 
 }
+@media (max-width: 768px) {
+  .form {
+    width: 95%;
+    padding: 20px 15px;
+  }
+
+  .text {
+    font-size: 16px;
+    color: black;
+  }
+}
+
 .form {
   display: flex;
-  flex-direction: column;  /* заголовок сверху, форма снизу */
-  align-items: center;     /* центрируем все элементы по центру */
-  width: 320px;            /* ширина формы */
-  max-width: 90vw;         /* адаптивно для маленьких экранов */
+  flex-direction: column;  
+  align-items: center;    
+  width: 320px;           
+  max-width: 90vw;        
   padding: 30px 20px;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 12px;
@@ -41,10 +53,9 @@
 
 
 
-/* Инпуты теперь фиксированной ширины и по центру */
 #form input {
-  width: 80%;               /* ширина инпутов относительно формы */
-  max-width: 250px;         /* ограничение для больших экранов */
+  width: 80%;              
+  max-width: 250px;        
   padding: 10px 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -59,7 +70,12 @@
   border-color: #007bff;
 }
 
-/* Кнопка тоже по центру, ширина как у инпутов */
+
+
+#form button:hover {
+  background-color: #0056b3;
+}
+
 #form button {
   width: 80%;
   max-width: 250px;
@@ -75,35 +91,23 @@
   margin-top: 10px;
 }
 
-#form button:hover {
-  background-color: #0056b3;
-}
 
-#form button {
+
+
+.main {
+  height: 90%;
   width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 6px;
-  background-color: #007bff;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("../Login/Rectangle 291.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-#form button:hover {
-  background-color: #0056b3;
-}
-
-.main{
-     display: flex;           /* ключ: все элементы в строку */
-  flex-direction: row;     /* по горизонтали (по умолчанию) */
-  align-items: center;     /* выравнивание по вертикали */
-  justify-content: space-between; /* растянуть по ширине */
-  box-sizing: border-box; 
-    height: 90%;
-    width: 100%;
-}
 .header {
   height: 10%;
   width: 100%;

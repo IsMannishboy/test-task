@@ -6,7 +6,7 @@ function Login() {
     
 
     async function GetCSRF(){
-        var URL = "http://localhost:3000"
+        var URL = "https://dragonfly-unexcusing-brittanie.ngrok-free.dev"
 
         try{
            const res = await  fetch(`${URL}/csrf`,{
@@ -26,7 +26,7 @@ function Login() {
     }
 
     async function HandleSubmit(event) {
-         var URL = "http://localhost:3000"
+         var URL = "https://dragonfly-unexcusing-brittanie.ngrok-free.dev"
 
         event.preventDefault();
         await GetCSRF()
@@ -88,7 +88,6 @@ function emailparser(email){
         <div className="page">
             <img className="header" src={header}></img>
             <div className="main">
-                <img className="main-image" src={login_image}></img>
                 <div className="form-div">
                     <div className="form">
                         <h1 className="text">Login</h1>

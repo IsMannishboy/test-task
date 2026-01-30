@@ -1,28 +1,46 @@
-#deals{
-      display: flex;
-          flex-wrap: wrap;       
-    justify-content: center; /* центр по горизонтали */
-
-        gap: "10px"         
+#deals {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;          /* ← отступы между div */
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
 }
-.page{
+
+
+
+.page {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
+    overflow-y: auto;   /* ✅ скролл */
 }
-#head{
-    color:black;
+
+
+#head {
+    color: black;
 }
-.deal{
-   width :200px;
-    height : 200px;
-   
-   margin : 10px;
-   background-size: cover;
-   background-position: center;
-   color :azure;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   padding: 10px;
+
+
+.deal {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;      /* внутренний отступ */
 }
+
+
+
+@media (max-width: 600px) {
+    #deals {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 10px;
+        gap: 12px;
+    }
+}
+

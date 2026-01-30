@@ -1,3 +1,4 @@
+const REVERSEPROXY = "dragonfly-unexcusing-brittanie.ngrok-free.dev"
 const express = require('express');
 const router = express.Router();
 const csurf = require('csurf');
@@ -12,7 +13,9 @@ Auth = new auth(SECRET);
 const app = express();
 app.use(express.json());
 app.use(cookieParser())
-app.use(csurf({cookie:true}));
+app.use(csurf({cookie:{
+    httpOnly:true
+}}));
 
 
 const db = require('./models');
@@ -68,6 +71,11 @@ router.post("/auth/register",async (req,res)=>{
      const {email,password} = req.body
      console.log("new user:",{email,password})
     const hashedPassword = await bcrypt.hash(password,10)
+    const find = await  db.User.findOne({where:{email}})
+    if(find){
+        console.log(find)
+        return res.status(403).json({"error":"this email already used"})
+    }
     const user = await db.User.create({email:email,password:hashedPassword})
     const {access,refresh} = Auth.MakeJWT({id:user.id,username:user.username})
     console.log({access,refresh})
@@ -159,6 +167,6 @@ router.get(/.*/,(req,res)=>{
 })
 app.use("/",router)
 db.sequelize.sync().then(() => {
-    app.listen(3000, () => {
+    app.listen(80,"0.0.0.0", () => {
         console.log('Server is running on port 3000');
     })});   

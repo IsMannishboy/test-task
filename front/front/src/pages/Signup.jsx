@@ -4,7 +4,7 @@ import header from "../assets/Login/Header-layout1 (1).png";
 import button from "../assets/Login/Group 308.png";
 import forgpass from "../assets/Login/Forgot password_.png";
 function Login() {
-    const URL = "http://localhost:3000"
+    const URL = "https://dragonfly-unexcusing-brittanie.ngrok-free.dev"
     
 
     async function GetCSRF(){
@@ -62,12 +62,11 @@ function Login() {
                 body:JSON.stringify(data)
             }).then((res)=>{
                 console.log(res)
-                if(res.status ==404){
-                    alert("user not found")
+                if(res.status == 403){
+                    alert("this email already used")
                     return
-                }else if(res.status == 403){
-                    alert("wrong password")
-                    return
+                }else if(res.status == 500){
+                    alert('server error')
                 }
                 window.location.href = "main"
             })
@@ -82,7 +81,6 @@ function Login() {
         <div className="page">
             <img className="header" src={header}></img>
             <div className="main">
-                <img className="main-image" src={login_image}></img>
                 <div className="form-div">
                     <div className="form">
                         <h1 className="text">Register</h1>
