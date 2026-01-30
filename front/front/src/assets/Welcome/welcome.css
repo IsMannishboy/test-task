@@ -1,0 +1,37 @@
+.welcome-page{
+    width: 100%;
+            height: 100;
+
+}
+#root{
+        width: 100%;
+        height: 100%;
+   
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+html, body, #root {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.welcome-main {
+  width: 100%;
+  height: 96vh;
+  display: flex;
+  justify-content: center; /* центр по горизонтали */
+  align-items: center;     /* центр по вертикали */
+
+  background-image: url("./image 60.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.welcome-main-content {
+    
+  text-align: center; /* чтобы текст был по центру */
+}

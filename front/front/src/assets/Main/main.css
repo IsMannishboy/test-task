@@ -1,0 +1,28 @@
+#deals{
+      display: flex;
+          flex-wrap: wrap;       
+    justify-content: center; /* центр по горизонтали */
+
+        gap: "10px"         
+}
+.page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#head{
+    color:black;
+}
+.deal{
+   width :200px;
+    height : 200px;
+   
+   margin : 10px;
+   background-size: cover;
+   background-position: center;
+   color :azure;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   padding: 10px;
+}

@@ -1,0 +1,49 @@
+.welcome-header {
+  display: block;
+  width: 100%;
+  margin: 0;     /* важно */
+  padding: 0;    /* важно */
+  background-image: url("../Welcome/Header-layout1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.welcome-header-buttons{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+}
+.welcome-header-login-button {
+      background: none;
+  cursor: pointer;
+    border: 2px solid transparent; /* место под рамку */
+
+  padding: 0;
+  margin-right: 2vh;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+
+  line-height: 0;
+  font-size: 0;
+}
+
+.welcome-header-signup-button:hover {
+  border-color: white;
+}
+
+.welcome-header-login-button:hover {
+  border-color: white;
+}
+.welcome-header-signup-button {
+      border: 2px solid transparent; /* место под рамку */
+
+        padding:0;
+     background: none;
+  cursor: pointer;
+  line-height: 0;
+  font-size: 0;
+}
+.welcome-header-image {
+  display: block;    /* убирает лишние отступы */
+}

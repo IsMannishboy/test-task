@@ -1,0 +1,33 @@
+.welcome-main {
+  width: 100%;
+  height: 100vh;
+  margin: 0;     
+  padding: 0;   
+  background-image: url("./image 60.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.welcome-main-title{
+    margin: 0;
+    padding: 0;
+}
+.welcome-main-description{
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    width: 60vh;
+     text-align: center;
+  margin: 0 auto;
+
+}
+.welcome-main-getstarted-button{
+    padding: 0;
+    margin:0;
+    background: none;
+      line-height: 0;
+
+}
+#root{
+  margin: 0;
+  padding: 0;
+}

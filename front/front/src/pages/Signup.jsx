@@ -1,13 +1,13 @@
 import "../assets/Login/login.css";
 import login_image from "../assets/Login/Rectangle 291.png";
 import header from "../assets/Login/Header-layout1 (1).png";
+import button from "../assets/Login/Group 308.png";
+import forgpass from "../assets/Login/Forgot password_.png";
 function Login() {
-    
+    const URL = "http://localhost:3000"
     
 
     async function GetCSRF(){
-        var URL = "http://localhost:3000"
-
         try{
            const res = await  fetch(`${URL}/csrf`,{
                 method:"GET",
@@ -24,50 +24,7 @@ function Login() {
             console.log("csrf err:",err)
         }
     }
-
-    async function HandleSubmit(event) {
-         var URL = "http://localhost:3000"
-
-        event.preventDefault();
-        await GetCSRF()
-        const data = {"email":event.target.elements[0].value,"password":event.target.elements[1].value}
-        const err = emailparser(data.email)
-        if(err != null){
-            alert("invalid email")
-            return
-        }else{
-             console.log(data)
-        try{
-            await fetch(`${URL}/auth/login`,{
-                method:"POST",
-                credentials:"include",
-                headers:{
-                              "Content-Type": "application/json",
-                               "X-CSRF-Token":localStorage.getItem("csrf")
-                              
-                },
-                body:JSON.stringify(data)
-            }).then((res)=>{
-                console.log(res)
-                if(res.status ==404){
-                    alert("user not found")
-                    return
-                }else if(res.status == 401){
-                    alert("wrong password")
-                    return
-                }else if(res.status == 403){
-                    alert("this email already used")
-                    return
-                }
-                window.location.href = "main"
-            })
-        }catch(err){
-            console.log("submit err:",err)
-        }
-        }
-       
-    }
-function emailparser(email){
+    function emailparser(email){
     let monkey = 0;
     for(let i = 0;i < email.length;i++){
         if(email[i] == '@'){
@@ -82,7 +39,44 @@ function emailparser(email){
         return "wrong email"
     }
 }
-
+    async function handleSubmit(event) {
+         
+        event.preventDefault();
+        await GetCSRF()
+        const data = {"email":event.target.elements[0].value,"password":event.target.elements[1].value}
+        console.log(data)
+        const err = emailparser(data.email)
+        if(err != null){
+            alert(err)
+            return
+        }else{
+            try{
+            await fetch(`${URL}/auth/register`,{
+                method:"POST",
+                credentials:"include",
+                headers:{
+                              "Content-Type": "application/json",
+                               "X-CSRF-Token":localStorage.getItem("csrf")
+                              
+                },
+                body:JSON.stringify(data)
+            }).then((res)=>{
+                console.log(res)
+                if(res.status ==404){
+                    alert("user not found")
+                    return
+                }else if(res.status == 403){
+                    alert("wrong password")
+                    return
+                }
+                window.location.href = "main"
+            })
+        }catch(err){
+            console.log("submit err:",err)
+        }
+        }
+        
+    }
     return (
         
         <div className="page">
@@ -91,8 +85,8 @@ function emailparser(email){
                 <img className="main-image" src={login_image}></img>
                 <div className="form-div">
                     <div className="form">
-                        <h1 className="text">Login</h1>
-                      <form id="form" onSubmit={HandleSubmit}>
+                        <h1 className="text">Register</h1>
+                      <form id="form" onSubmit={handleSubmit}>
                     <p className="text">Email:</p>
                     <input type="text" placeholder="Enter your email" />
                     
@@ -100,7 +94,7 @@ function emailparser(email){
                     <input type="password" placeholder="Enter your password" />
                         <p>Forgot password?</p>
                     <button type="submit">Login</button>
-                                            <p>Dont have account?<a href="/register">sign up</a></p>
+                                            <p>Already have account?<a href="/login">login</a></p>
 
                     </form>
                     </div>
