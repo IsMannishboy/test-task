@@ -42,5 +42,9 @@
         padding: 10px;
         gap: 12px;
     }
+    .deal{
+        height: 50%;
+        width: 50%;
+    }
 }
 

@@ -27,8 +27,9 @@
     const dealDiv = document.createElement("div");
     dealDiv.className = "deal";
     dealDiv.style.backgroundImage = `url(${URL.createObjectURL(img)})`;
-    dealDiv.innerHTML = `<h3>${deal.dealname}</h3><p>${deal.description}</p>`;
-    parent.appendChild(dealDiv);
+    dealDiv.innerHTML = `<h3 style="color: white;">${deal.dealname}</h3>
+                     <p style="color: white;">${deal.description}</p>`;
+                         parent.appendChild(dealDiv);
 }
 
 export default GetDealsImagesAndRenderDeals
